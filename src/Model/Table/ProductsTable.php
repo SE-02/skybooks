@@ -49,6 +49,43 @@ class ProductsTable extends Table {
         }
         return $catalog_name;
     }
+	public function listProductCatalog($product_id){
+        $query = $this->find('all')->select(['catalog_id'])->where(['Products.product_id'=>$product_id]);
+        $info = $query->toArray();
+        foreach ($info as $v) {
+            $catalog= $v->catalog_id;
+        }
+        $query_catalog = $this->find('all')->where(['Products.catalog_id'=>$catalog])->limit(3);
+        return $query_catalog;
+    }
+    public function listProductCatalog2($product_id){
+        $query = $this->find('all')->select(['catalog_id'])->where(['Products.product_id'=>$product_id]);
+        $info = $query->toArray();
+        foreach ($info as $v) {
+            $catalog= $v->catalog_id;
+        }
+        $query_catalog = $this->find('all')->where(['Products.catalog_id'=>$catalog])->limit(3)->offset(4);
+        return $query_catalog;
+    }
+    public function listProductCatalog3($product_id){
+        $query = $this->find('all')->select(['catalog_id'])->where(['Products.product_id'=>$product_id]);
+        $info = $query->toArray();
+        foreach ($info as $v) {
+            $catalog= $v->catalog_id;
+        }
+        $query_catalog = $this->find('all')->where(['Products.catalog_id'=>$catalog])->limit(3)->offset(7);
+        return $query_catalog;
+    }
+	//sach cung tac gia
+    public function listProductOfAuthor($product_id){
+        $query = $this->find('all')->select(['author'])->where(['Products.product_id'=>$product_id]);
+        $info = $query->toArray();
+        foreach ($info as $v) {
+            $author = $v->author;
+        }
+        $query_author = $this->find('all')->where(['Products.author'=>$author]);
+        return $query_author;
+    }
     public function listProductOfCatalog($catalog_id){
         $this->Catalog = TableRegistry::get('Catalog');
         $query = $this->find('all')->where(['Products.catalog_id'=>$catalog_id]);
