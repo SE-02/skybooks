@@ -1,0 +1,12 @@
+BIÊN BẢN HỌP NHÓM NGÀY 13/11/2018
+I. NỘI DUNG CÔNG VIỆC
+- Thời gian họp: 7h-9h sáng thứ 3 
+- Cài đặt môi trường lập trình.
+- Tool: Sublime text 3, Xampp 5.6, GIT, MySQL
+- Bố trí các file trên github.
+- Các phiên bản thực hiện test.
+- Tester tìm giải pháp test các thư viện hiệu quả.
+II. KHÓ KHĂN
+- Cài đặt môi trường có máy bị lỗi Xampp.
+- Cố gắng giải quyết vấn đề môi trường trong tuần này.
+
