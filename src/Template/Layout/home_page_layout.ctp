@@ -509,7 +509,7 @@
                      </div>
                      <div class="col-md-3 col-sm-6">
                         <h4 class="title">Liên hệ</strong></h4>
-                        <p>Số 334, Nguyễn Trãi, Hà Nội, Việt Nam</p>
+                        <p>Số 334, Nguyễn Trãi, Thanh Xuân, Hà Nội, Việt Nam</p>
                         <p>Điện thoại: (+84) 123456789 </p>
                         <p>Email : skybooks@gmail.com</p>
                      </div>
@@ -543,10 +543,10 @@
                      </div>
                      <div class="col-md-6">
                         <ul class="social-icon">
-                           <li><a href="#" class="linkedin"></a></li>
-                           <li><a href="#" class="google-plus"></a></li>
-                           <li><a href="#" class="twitter"></a></li>
-                           <li><a href="#" class="facebook"></a></li>
+                           <li><a href="" class="linkedin"></a></li>
+                           <li><a href="" class="google-plus"></a></li>
+                           <li><a href="" class="twitter"></a></li>
+                           <li><a href="" class="facebook"></a></li>
                         </ul>
                      </div>
                   </div>
