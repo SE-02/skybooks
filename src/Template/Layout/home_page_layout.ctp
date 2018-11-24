@@ -1,20 +1,4 @@
-php
-/**
- * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @since         0.10.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
- */
 
-$cakeDescription = 'CakePHP: the rapid development php framework';
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -248,10 +232,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             </h3>
             <ul>
               <li>
-                
               </li>
-                
-              <?php } ?>
             </ul>
           </div>
           <div class="clearfix">
@@ -337,7 +318,60 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
          
           
           <div id="myCarousel" class="carousel slide" data-ride="carousel">
-          
+          <div class="branch leftbar">
+            <h3 class="title">
+              Ý KIẾN KHÁCH HÀNG
+            </h3>
+            
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+              <i class="fa fa-angle-left"></i>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+              <i class="fa fa-angle-right"></i>
+            </a>
+            <div class="carousel-inner">
+            <div class="item active">
+            <ul>
+              <li>
+                <img id = "avatar" src = "/img/ava1.png"></img>
+              </li>
+              <li>
+                <p id = "name" text-align = "center"><strong>BÍCH PHƯƠNG</strong></p>
+              </li>
+              <li>
+                <p id = "idea">" Tư vấn viên rất nhiệt tình, giao hàng nhanh, sách nhận được còn nguyên vẹn, giấy đẹp. Rất hài lòng, sẽ ủng hộ Skybooks lâu dài. "</p>
+              </li>
+            </ul>
+            </div>
+            <div class="item">
+            <ul>
+              <li>
+                <img id = "avatar" src = "/img/ava2.png"></img>
+              </li>
+              <li>
+                <p id = "name" text-align = "center"><strong>BẢO ANH</strong></p>
+              </li>
+              <li>
+                <p id = "idea">" Tư vấn viên rất nhiệt tình, giao hàng nhanh, sách nhận được còn nguyên vẹn, giấy đẹp. Rất hài lòng, sẽ ủng hộ Skybooks lâu dài. "</p>
+              </li>
+            </ul>
+            </div>
+            <div class="item">
+            <ul>
+              <li>
+                <img id = "avatar" src = "/img/ava3.png"></img>
+              </li>
+              <li>
+                <p id = "name" text-align = "center"><strong>SƠN TÙNG</strong></p>
+              </li>
+              <li>
+                <p id = "idea">" Tư vấn viên rất nhiệt tình, giao hàng nhanh, sách nhận được còn nguyên vẹn, giấy đẹp. Rất hài lòng, sẽ ủng hộ Skybooks lâu dài. "</p>
+              </li>
+            </ul>
+            </div>
+             </div>
+          </div>
+          </div>
           <div class="clearfix">
           </div>
           <!-- <div class="others leftbar">
