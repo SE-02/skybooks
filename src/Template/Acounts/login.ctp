@@ -28,6 +28,7 @@
 		<a class="tab-item" href="/registration">Tạo tài khoản</a>
 		</div>
 		<div class="login">
+			<div style="text-align: center; padding-right: 15px; color: red;"><?= $this->Flash->render() ?></div>
 			<?php echo $this->Form->create() ?>
 			<?= $this->Form->control('email',['type'=>'text','label'=>'Email','class'=>'','placeholder'=>"Nhập địa chỉ email",]) ?>
 
