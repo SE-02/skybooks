@@ -15,6 +15,9 @@ use Cake\ORM\Table;
 use Cake\ORM\Entity;
 use Cake\ORM\Query;
 class HomeUsersController extends AppController {
+    public $paginate = [
+        'limit' => 12
+    ];
     public function initialize() {
         parent::initialize();
         $this->viewBuilder()->setLayout('home_page_layout');
@@ -29,17 +32,19 @@ class HomeUsersController extends AppController {
         //print_r($list);die;
         $this->set('list',$list);
         // $this->paginate($list_product);
-
+        $detail_bill = $this->loadModel('DetailBills');
+        $best_sellers = $detail_bill->bestSellers();
         $product = $this->loadModel('Products');
         $new_book = $product->newBook();
         
         //print_r($best_sellers);die;
         $this->set('product', $best_sellers);
+
+        $product = $this->loadModel('Products');
+        $new_book = $product->newBook();
         $this->set('new_book',$new_book);
         $this->paginate('product');
-        $user = $this->Auth->user();
-        $this->set('user',$user);
-       
+              
     }
 
 	public function beforeFilter(Event $event) {
