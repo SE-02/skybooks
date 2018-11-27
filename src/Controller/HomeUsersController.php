@@ -24,7 +24,22 @@ class HomeUsersController extends AppController {
     }
 
     public function index(){
-   
+		$catalog = $this->loadModel('Catalog');
+        $list = $catalog->listCatalog();
+        //print_r($list);die;
+        $this->set('list',$list);
+        // $this->paginate($list_product);
+
+        $product = $this->loadModel('Products');
+        $new_book = $product->newBook();
+        
+        //print_r($best_sellers);die;
+        $this->set('product', $best_sellers);
+        $this->set('new_book',$new_book);
+        $this->paginate('product');
+        $user = $this->Auth->user();
+        $this->set('user',$user);
+       
     }
 
 	public function beforeFilter(Event $event) {
