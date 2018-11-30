@@ -29,7 +29,7 @@
 		</div>
 		<div class="login">
 			<div style="text-align: center; padding-right: 15px; color: red;"><?= $this->Flash->render() ?></div>
-			<?php echo $this->Form->create() ?>
+			<?php echo $this->Form->create('Acounts') ?>
 			<?= $this->Form->control('email',['type'=>'text','label'=>'Email','class'=>'','placeholder'=>"Nhập địa chỉ email",]) ?>
 
 			<?= $this->Form->control('password',['type'=>'password','label'=>'Mật khẩu:','class'=>'dangki1 d1','placeholder'=>"Mật khẩu từ 6 đến 32 kí tự",]) ?>

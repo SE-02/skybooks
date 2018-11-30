@@ -13,7 +13,7 @@ class AcountsController extends AppController{
     {
         parent::beforeFilter($event);
 
-        $this->Auth->allow(['dangki', 'logout' ,'home-users']);
+        $this->Auth->allow(['dangki', 'logout']);
     }
     public function login(){
     	$this->viewBuilder()->setLayout('my_layout_login');
@@ -22,7 +22,7 @@ class AcountsController extends AppController{
         //$ref = $_GET['quy'];
         //$id = $_GET['id'];
         if($this->request->is('post')){
-        	$data = $this->request->data();
+            $data = $this->request->data();
             if (empty($data['email']) && empty($data['password'])) {
                $this->Flash->error(__('Nhập tên tài khoản hoặc mật khẩu'));
             } elseif (empty($data['email'])) {
