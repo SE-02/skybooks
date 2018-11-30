@@ -13,16 +13,16 @@ class AcountsController extends AppController{
     {
         parent::beforeFilter($event);
 
-        $this->Auth->allow(['dangki', 'logout' ,'home-users']);
+        $this->Auth->allow(['dangki', 'logout']);
     }
     public function login(){
     	$this->viewBuilder()->setLayout('my_layout_login');
-    	// $query = $this->Auth->user();
+    	$query = $this->Auth->user();
      //    $url = $this->Cookie->read('url');
         // $ref = $_GET['quy'];
         // $id = $_GET['id'];
         if($this->request->is('post')){
-        	$data = $this->request->data();
+            $data = $this->request->data();
             if (empty($data['email']) && empty($data['password'])) {
                $this->Flash->error(__('Nhập tên tài khoản hoặc mật khẩu'));
             } elseif (empty($data['email'])) {
@@ -31,7 +31,6 @@ class AcountsController extends AppController{
                 $this->Flash->error(__('Nhập mật khẩu'));
             } else {
                 $acount = $this->Auth->identify();
-                var_dump($acount);die;
                 if($acount){
                     $this->Auth->setUser($acount);
                     $query = $this->Auth->user();
