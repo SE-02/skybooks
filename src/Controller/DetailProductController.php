@@ -36,16 +36,46 @@ class DetailProductController extends AppController {
         $this->set('list_product_catalog3',$list_product_catalog3);
         $list_product_author = $products->listProductOfAuthor($product_id);
         $this->set('list_product_author',$list_product_author);
+        $comment = $this->loadModel('Comments');
+        $listComment = $comment->loadComment($product_id);
+        $this->set('listComment',$listComment);
         $catalog = $this->loadModel('Catalog');
         $list_catalog = $catalog->listCatalog();
         $this->set('list_catalog',$list_catalog);
-        //$user = $this->Auth->user();
-        //$this->set('user',$user);
+        $user = $this->Auth->user();
+        $this->set('user',$user);
         $url = '/DetailProduct/index/*';
         //$url = 'http://skybooks.test/detail-product/index/*';
         $this->Cookie->write('url',$url);
 
 	}
+    public function comment($product_id){
+        $user = $this->Auth->user();
+     $this->set('user',$user);
+    
+     if(!$user){
+        $this->redirect(['controller'=>"Acounts",'action'=>'login']);
+     }
+     else{
+        $comment = $this->loadModel('Comments');
+        $addComment = $this->Comments->newEntity();
+        if($this->request->is('post')){
+            $listComment = [];
+            $listComment['user_id']= $user['user_id'];
+            $listComment['product_id'] = $product_id;
+            $listComment['number_star'] = $this->request->data['sosao'];
+            $listComment['title'] = $this->request->data['title'];
+            $listComment['comment'] = $this->request->data['content'];
+            $listComment['status'] = 0;
+            $addComment = $this->Comments->patchEntity($addComment,$listComment,['validate'=>'Add']);
+            
+            if($this->Comments->save($addComment)){
+                $this->Flash->mySuccess('Bạn đã gửi đánh giá thành công!');
+               $this->redirect($this->referer());
+            }
+        }
+    }
+}
     
      public function beforeFilter(Event $event) {
 
