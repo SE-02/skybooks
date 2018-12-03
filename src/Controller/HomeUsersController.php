@@ -44,11 +44,14 @@ class HomeUsersController extends AppController {
         $new_book = $product->newBook();
         $this->set('new_book',$new_book);
         $this->paginate('product');
+        $user = $this->Auth->user();
+        $this->set('user',$user);
               
     }
 
 	public function beforeFilter(Event $event) {
         parent::beforeFilter($event);
+        $this->Auth->allow(['index']);
     }
 
 
