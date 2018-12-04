@@ -54,10 +54,11 @@ class ShopCartController extends AppController {
         //print_r($tongtien);
         $this->set("total",$total);
         $this->Cookie->write('cart',$cart);
+        
         $this->set('cart',$cart);
         // print ("<pre>");
         // print_r($cart);
-        $user = $this->Auth->user();
+         $user = $this->Auth->user();
         $this->set('user',$user);
     }
     public function remove($product_id){
@@ -74,6 +75,11 @@ class ShopCartController extends AppController {
         }
         $this->set('cart',$cart);
         $this->redirect($this->referer());
+    }
+    public function emptyCart(){
+         $cart = $this->Cookie->read('cart');
+         $this->set('cart',$cart);
+         $this->Cookie->delete('cart');
     }
     
     public function beforeFilter(Event $event) {
