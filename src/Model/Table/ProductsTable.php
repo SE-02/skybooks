@@ -100,6 +100,10 @@ class ProductsTable extends Table {
         $query = $this->find('all')->where(['discount'=>10])->order(['created_at'=>'DESC'])->limit(12);
         return $query;
     }
+    public function productCart($product_id){
+        $query = $this->find()->select(['product_name','price','discount','image_link'])->where(['Products.product_id'=>$product_id]);
+        return $query;
+    }
      public function validationAdd(Validator $validator) {
         return $validator
                         ->notEmpty('product_name', 'Hãy nhập tên   sách');
