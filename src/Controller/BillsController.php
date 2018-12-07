@@ -80,6 +80,19 @@ class BillsController extends AppController {
             return $this->redirect(['action' => 'dondathang']);
         }
     }
+    public function dondathang(){
+        $cart = $this->Cookie->read('cart');
+        $this->set('cart',$cart);
+        $total_bill = $this->Cookie->read('total');
+        $this->set('total_bill',$total_bill);
+        $info = $this->Cookie->read('info');
+        $this->set('info',$info);
+        $this->Cookie->delete('cart');
+        $this->Cookie->delete('total');
+        $this->Cookie->delete('info');
+         //print_r($info);die;
+         //print_r($info['name_user']);die;
+    }
 
     public function beforeFilter(Event $event) {
 
