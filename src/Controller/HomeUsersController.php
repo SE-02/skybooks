@@ -48,10 +48,29 @@ class HomeUsersController extends AppController {
         $this->set('user',$user);
               
     }
+    public function loadProductOfCatalog($catalog_id){
+        $catalog = $this->loadModel('Catalog');
+        $list = $catalog->listCatalog();
+        $this->set('list',$list);
+        $product = $this->loadModel('Products');
+        $list_productOfCatalog = $product->listProductOfCatalog($catalog_id);
+        $this->paginate($list_productOfCatalog);
+        $this->set('list_productOfCatalog',$list_productOfCatalog);
+        $bestSale = $product->bestSale();
+        $bestSale2 = $product->bestSale2();
+        $bestSale3 = $product->bestSale3();
+        $this->set('bestSale',$bestSale);
+        $this->set('bestSale2',$bestSale2);
+        $this->set('bestSale3',$bestSale3);
+        $cart = $this->Cookie->read('cart');
+        $this->set('cart',$cart);
+        $total = $this->Cookie->read('total');
+        $this->set('total',$total);
+    }
 
 	public function beforeFilter(Event $event) {
         parent::beforeFilter($event);
-        $this->Auth->allow(['index']);
+        $this->Auth->allow(['index','loadProductOfCatalog']);
     }
 
 
