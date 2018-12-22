@@ -102,7 +102,6 @@
                           <?php 
                             $count = 0;
                               if($cart){
-                             
                               foreach ($cart as $key => $value) {
                                $count++;
                                }

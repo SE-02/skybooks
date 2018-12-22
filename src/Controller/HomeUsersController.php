@@ -29,24 +29,29 @@ class HomeUsersController extends AppController {
     public function index(){
 		$catalog = $this->loadModel('Catalog');
         $list = $catalog->listCatalog();
-        //print_r($list);die;
         $this->set('list',$list);
         // $this->paginate($list_product);
         $detail_bill = $this->loadModel('DetailBills');
         $best_sellers = $detail_bill->bestSellers();
         $product = $this->loadModel('Products');
         $new_book = $product->newBook();
-        
-        //print_r($best_sellers);die;
         $this->set('product', $best_sellers);
-
         $product = $this->loadModel('Products');
         $new_book = $product->newBook();
         $this->set('new_book',$new_book);
+        $bestSale = $product->bestSale();
+        $bestSale2 = $product->bestSale2();
+        $bestSale3 = $product->bestSale3();
+        $this->set('bestSale',$bestSale);
+        $this->set('bestSale2',$bestSale2);
+        $this->set('bestSale3',$bestSale3);
         $this->paginate('product');
+        $cart = $this->Cookie->read('cart');
+        $this->set('cart',$cart);
+        $total = $this->Cookie->read('total');
+        $this->set('total',$total);
         $user = $this->Auth->user();
         $this->set('user',$user);
-              
     }
     public function loadProductOfCatalog($catalog_id){
         $catalog = $this->loadModel('Catalog');
@@ -67,10 +72,32 @@ class HomeUsersController extends AppController {
         $total = $this->Cookie->read('total');
         $this->set('total',$total);
     }
+    public function giamgia(){
+        $catalog = $this->loadModel('Catalog');
+        $list = $catalog->listCatalog();
+        //print_r($list);die;
+        $this->set('list',$list);
+        $product = $this->loadModel('Products');
+        $list_product = $product->listProductGg();
+        $this->paginate($list_product);
+        $this->set('product',$list_product);
+        $bestSale = $product->bestSale();
+        $bestSale2 = $product->bestSale2();
+        $bestSale3 = $product->bestSale3();
+        $this->set('bestSale',$bestSale);
+        $this->set('bestSale2',$bestSale2);
+        $this->set('bestSale3',$bestSale3);
+        $cart = $this->Cookie->read('cart');
+        $this->set('cart',$cart);
+        $total = $this->Cookie->read('total');
+        $this->set('total',$total);
+        $user = $this->Auth->user();
+        $this->set('user',$user);
+    }
 
 	public function beforeFilter(Event $event) {
         parent::beforeFilter($event);
-        $this->Auth->allow(['index','loadProductOfCatalog']);
+        $this->Auth->allow(['index','loadProductOfCatalog','giamgia']);
     }
 
 
