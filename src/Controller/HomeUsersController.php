@@ -75,7 +75,6 @@ class HomeUsersController extends AppController {
     public function giamgia(){
         $catalog = $this->loadModel('Catalog');
         $list = $catalog->listCatalog();
-        //print_r($list);die;
         $this->set('list',$list);
         $product = $this->loadModel('Products');
         $list_product = $product->listProductGg();
@@ -94,10 +93,42 @@ class HomeUsersController extends AppController {
         $user = $this->Auth->user();
         $this->set('user',$user);
     }
+    public function tim(){
+        $catalog = $this->loadModel('Catalog');
+        $list = $catalog->listCatalog();
+        $productTable= $this->loadModel('Products');
+
+
+        $bestSale = $productTable->bestSale();
+        $bestSale2 = $productTable->bestSale2();
+        $bestSale3 = $productTable->bestSale3();
+        $this->set('bestSale',$bestSale);
+        $this->set('bestSale2',$bestSale2);
+        $this->set('bestSale3',$bestSale3);
+
+        $this->set('list',$list);
+        $productTable = TableRegistry::get('Products');
+
+        if($this->request->is('post')){
+            $dataS = $this->request->data;
+            $product['search'] = isset($dataS['search']) ? $dataS['search'] : null;
+            $data = $productTable->find('all')
+            ->select(['product_id','product_name','price','image_link','author','description'])
+            ->where(['product_name like' => '%'.$product['search'].'%'])
+            ->toArray();
+            $this->set('data',$data);
+       }
+        $cart = $this->Cookie->read('cart');
+        $this->set('cart',$cart);
+        $total = $this->Cookie->read('total');
+        $this->set('total',$total);
+        $user = $this->Auth->user();
+        $this->set('user',$user);
+    }
 
 	public function beforeFilter(Event $event) {
         parent::beforeFilter($event);
-        $this->Auth->allow(['index','loadProductOfCatalog','giamgia']);
+        $this->Auth->allow(['index','loadProductOfCatalog','giamgia', 'tim']);
     }
 
 
