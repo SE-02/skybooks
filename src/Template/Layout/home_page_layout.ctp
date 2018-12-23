@@ -135,9 +135,22 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 						<ul class="usermenu">
 						</ul>
 						<ul class="usermenu">
-                        </ul>
-                   </div>
-                </div>
+              <?php 
+                if(!$user){ ?>
+                <li> <?php echo $this->Html->link('Đăng nhập',['quy'=>'dangnhap','id'=>1,'controller'=>'Acounts','action'=>'login'],['escape'=>false]) ?></li>
+               
+
+               <li><a href="/Acounts/dangki" class="">Đăng kí</a></li>
+               <?php }
+               else{
+               ?>
+               <li style="color: white">Xin chào <?php echo $user['fullname']?></li>
+               <li> <?php echo $this->Html->link('Tài khoản của tôi',['controller'=>'Bills','action'=>'lichsumuahang'],['escape'=>false]) ?></li>
+               <li> <?php echo $this->Html->link('Thoát',['quy'=>'dangxuat','id'=>1,'controller'=>'Acounts','action'=>'logout'],['escape'=>false]) ?></li>
+               <?php } ?>
+              </ul>
+             </div>
+            </div>
              </div>
              <div class="clearfix"></div>
              <div class="header_bottom">
@@ -145,22 +158,33 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                    <li id="search" class="search">
                        <form method="post" action="/HomeUsers/tim/"><input class="search-submit" type="submit" value=""><input class="search-input" placeholder="Nhập để tìm kiếm..." type="text" value="" name="search"></form>
                    </li>
+                    <?php 
+                      $count = 0;
+                      if($cart){
+                        foreach ($cart as $key => $value) {
+                          $count++;
+                        }
+                   ?>
                   <li class="option-cart">
-                      <a href="#" class="cart-icon">cart <span class="cart_no"></span></a>
-                      
+                      <a href="#" class="cart-icon">cart <span class="cart_no"><?php echo $count; ?></span></a>
                       <ul class="option-cart-item">
+                      <?php foreach ($cart as $key => $value) { ?>
                        <li>
                             <div class="cart-item">
-                               <div class="image"></div>
+                               <div class="image">
+                                 <?php echo $this->Html->image($value['image_link']); ?>
+                               </div>
                                <div class="item-description">
                                   <p class="" style="color: gray!important;font-weight: bold"><?php echo $value['product_name'] ?></p>
-                                  <p>Số lượng: <span class="light-red"></span><br>Giá: <span class="light-red"></span></p>
+                                  <p>Số lượng: <span class="light-red"><?php echo $value['quantity']?></span><br>Giá: <span class="light-red"><?php echo number_format($value['price'],0,"",".");echo "₫"; ?></span></p>
                                </div>
                                
                             </div>
                          </li>
-						<li><span class="total">Tổng: <strong></strong></span><button class="checkout" onClick="location.href='/Bills/dathang'">Đặt hàng</button></li>
+                         <?php } ?>
+						            <li><span class="total">Tổng: <strong><?php echo number_format($total,0,"",".");echo "₫"; ?></strong></span><button class="checkout" onClick="location.href='/Bills/dathang'">Đặt hàng</button></li>
                       </ul>
+                      <?php } ?>
                    </li>
                    
                   

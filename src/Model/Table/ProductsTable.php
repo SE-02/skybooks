@@ -32,6 +32,13 @@ class ProductsTable extends Table {
         return $query;
     }
     
+    public function listProductGg(){
+        $query = $this->find('all')
+                        ->where(['Products.discount >='=>30])
+                        ->andwhere(['Products.discount <'=>70]);
+        return $query;
+    }
+    
     public function getNameCatalog(){
         $query = $this->find()->select(['catalog_id']);
         $list_id = $query->toArray();
