@@ -1,0 +1,6 @@
+﻿BIÊN BẢN HỌP NHÓM NGÀY 27/12/2018
+ NỘI DUNG CÔNG VIỆC
+- Viết unittest
+- fig bugs đang tồn tại
+- Test các CN còn lại
+- Viết TL doc + làm slide
