@@ -3,4 +3,4 @@
 - Viết unittest
 - fig bugs đang tồn tại
 - Test các CN còn lại
-- Viết TL doc + làm slide
+- Viết TL doc + làm slide báo cáo
