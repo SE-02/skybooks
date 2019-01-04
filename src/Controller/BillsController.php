@@ -99,6 +99,17 @@ class BillsController extends AppController {
         parent::beforeFilter($event);
         $this->Auth->allow(['dathang','bill','dondathang']);
     }
+    public function donhangchuagiao(){
+
+    }
+
+    public function donhangdanggiao(){
+
+    }
+
+    public function donhangdagiao(){
+        
+    }
 }
 ?>
 
