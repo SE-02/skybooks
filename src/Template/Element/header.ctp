@@ -72,7 +72,7 @@
                             <li><?= $this->Html->link('<i class="fa fa-circle-o"></i> <span>Tạo mới kho</span>', ['controller' => 'WareHouses','action' => 'add'], ['escape' => false]) ?></li>
                             
                             <li><?= $this->Html->link('<i class="fa fa-circle-o"></i> <span>quản lí kho hàng</span>', ['controller' => 'ManageWareHouses', 'action' => 'quanlikho'], ['escape' => false]) ?></li>
-                            <li><?= $this->Html->link('<i class="fa fa-circle-o"></i> <span>Chi tiết kho hàng</span>', ['controller' => 'ManageWareHouses', 'action' => 'chitietkho'], ['escape' => false]) ?></li>
+                            <!-- <li><?= $this->Html->link('<i class="fa fa-circle-o"></i> <span>Chi tiết kho hàng</span>', ['controller' => 'ManageWareHouses', 'action' => 'chitietkho'], ['escape' => false]) ?></li> -->
                             
                         </ul>
                     </li> 
