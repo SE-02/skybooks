@@ -19,8 +19,8 @@ class AcountsController extends AppController{
     	$this->viewBuilder()->setLayout('my_layout_login');
     	$query = $this->Auth->user();
         // $url = $this->Cookie->read('url');
-        $ref = $_GET['quy'];
-        $id = $_GET['id'];
+        $ref = isset($_GET['quy']) ? $_GET['quy'] : '';
+        $id = isset($_GET['id']) ? $_GET['id'] : '';
         if($this->request->is('post')){
             $data = $this->request->data();
             if (empty($data['email']) && empty($data['password'])) {
