@@ -1,44 +1,58 @@
+<?php
+/**
+ * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
+ * Licensed under The MIT License
+ * For full copyright and license information, please see the LICENSE.txt
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link          https://cakephp.org CakePHP(tm) Project
+ * @since         0.10.0
+ * @license       https://opensource.org/licenses/mit-license.php MIT License
+ */
 
+$cakeDescription = 'CakePHP: the rapid development php framework';
+?>
 <!DOCTYPE html>
 <html>
 <head>
+      <?php
+    /*<?= $this->Html->charset() ?>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      <?= $cakeDescription ?>:
+        <?= $this->fetch('title') ?>
+    </title>
+    <?= $this->Html->meta('icon') ?>
+  */
+    ?>
+
+
+    
+
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
       <meta name="description" content="">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="shortcut icon" href="/img/favicon.JPG">
+      <link rel="shortcut icon" href="/img/favicon.jpg">
       <title>Công ty cổ phần sách SkyBooks</title>
       <link href="/css/bootstrap.css" rel="stylesheet">
       <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,700,500italic,100italic,100' rel='stylesheet' type='text/css'>
       <link href="/css/font-awesome.min.css" rel="stylesheet">
       <link rel="stylesheet" href="/css/flexslider.css" type="text/css" media="screen"/>
       <link href="/css/sequence-looptheme.css" rel="stylesheet" media="all"/>
-
       <link href="/css/style1.css" rel="stylesheet">
-
-      <link href="/css/bars-1to10.css" rel="stylesheet">
-      <link href="/css/bars-movie.css" rel="stylesheet">
-      <link href="/css/css-stars.css" rel="stylesheet">
-      <link href="/css/rating.css" rel="stylesheet">
-      <link rel="stylesheet" href="/css/jquery.rateyo.min.css" >
-      <script type="text/javascript" src="/js/jquery-1.10.2.min.js" ></script>
+      <script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
       <script type="text/javascript" src="/js/jquery.easing.1.3.js"></script>
       <script type="text/javascript" src="/js/bootstrap.min.js"></script>
       <script type="text/javascript" src="/js/jquery.sequence-min.js"></script>
       <script type="text/javascript" src="/js/jquery.carouFredSel-6.2.1-packed.js"></script>
       <script defer src="/js/jquery.flexslider.js"></script>
-      
-      <script type="text/javascript" src="/js/rating.js" ></script>
-      <script type="text/javascript" src="/js/jquery.min.js" ></script>
-      
-      <script type="text/javascript" src="/js/jquery.rateyo.js" ></script>
-      
-      
-      </script>
-     
-
+      <script type="text/javascript" src="/js/script.min.js" ></script>
 </head>
 <body id="home">
       <div class="wrapper">
@@ -68,24 +82,20 @@
                               </ul>
                            </div>
                            <div class="col-md-3">
-                              <ul class="usermenu">
+                               <ul class="usermenu">
                                     <?php 
                                     if(!$user){ ?>
                                     <li> <?php echo $this->Html->link('Đăng nhập',['quy'=>'dangnhap','id'=>1,'controller'=>'Acounts','action'=>'login'],['escape'=>false]) ?></li>
                                    
 
                                    <li><a href="/Acounts/dangki" class="">Đăng kí</a></li>
-
                                    <?php }
                                    else{
                                    ?>
                                    <li style="color: white">Xin chào <?php echo $user['fullname']?></li>
-                                     
-                                    <li> <?php echo $this->Html->link('Thoát',['quy'=>'dangxuat','id'=>1,'controller'=>'Acounts','action'=>'logout'],['escape'=>false]) ?></li>
                                    <?php } ?>
-                                   <!--  <li> <?php //echo $this->Html->link('Tài khoản của tôi',['controller'=>'Bills','action'=>'lichsumuahang'],['escape'=>false]) ?></li> -->
-
-                                  
+                                    
+                                   <li> <?php echo $this->Html->link('Thoát',['quy'=>'dangxuat','id'=>1,'controller'=>'Acounts','action'=>'logout'],['escape'=>false]) ?></li>
                                    
                                 </ul>
                               
@@ -96,15 +106,15 @@
                      <div class="header_bottom">
                         <ul class="option">
                            <li id="search" class="search">
-                              <form method="post" action="/HomeUsers/tim/"><input class="search-submit" type="submit" value=""><input class="search-input" placeholder="Enter your search term..." type="text" value="" name="search"></form>
+                              <form><input class="search-submit" type="submit" value=""><input class="search-input" placeholder="Enter your search term..." type="text" value="" name="search"></form>
                            </li>
-
-                          <?php 
+                            <?php 
                             $count = 0;
-                              if($cart){
-                              foreach ($cart as $key => $value) {
-                               $count++;
-                               }
+                           if($cart){
+                          
+                           foreach ($cart as $key => $value) {
+                            $count++;
+                            }
                            ?>
                           <li class="option-cart">
                               <a href="#" class="cart-icon">cart <span class="cart_no"><?php echo $count; ?></span></a>
@@ -131,10 +141,11 @@
                         <div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div>
                         <div class="navbar-collapse collapse">
                            <ul class="nav navbar-nav">
-                              <li ><a href="/HomeUsers/index">Trang chủ</a></li>
-                               <li><a href="/HomeUsers/giamgia">Chương trình khuyến mãi</a></li>
-                               <li><a href="/HomeGioiThieu/index">Giới thiệu</a></li>
-                               <li ><a href="/HomeLienhe/index">Liên hệ</a></li>
+                             <li ><a href="/HomeUsers/index">Trang chủ</a></li>
+                            <li><a href="/HomeUsers/giamgia">Chương trình khuyến mãi</a></li>
+                            <li><a href="/HomeGioiThieu/index">Giới thiệu</a></li>
+                            <li ><a href="/HomeLienhe/index">Liên hệ</a></li>
+                                    
 
                            </ul>
                         </div>

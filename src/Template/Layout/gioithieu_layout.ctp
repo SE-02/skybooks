@@ -15,15 +15,22 @@
       <link href="/css/font-awesome.min.css" rel="stylesheet">
       <link rel="stylesheet" href="/css/flexslider.css" type="text/css" media="screen"/>
       <link href="/css/sequence-looptheme.css" rel="stylesheet" media="all"/>
-
-      <link href="/css/style1.css" rel="stylesheet">
+      <link href="/css/style.css" rel="stylesheet">
 
       <link href="/css/bars-1to10.css" rel="stylesheet">
       <link href="/css/bars-movie.css" rel="stylesheet">
       <link href="/css/css-stars.css" rel="stylesheet">
       <link href="/css/rating.css" rel="stylesheet">
-      <link rel="stylesheet" href="/css/jquery.rateyo.min.css" >
+
+
+        <link rel="stylesheet" href="/css/jquery.rateyo.min.css" >
+
+      
+
+      
+
       <script type="text/javascript" src="/js/jquery-1.10.2.min.js" ></script>
+
       <script type="text/javascript" src="/js/jquery.easing.1.3.js"></script>
       <script type="text/javascript" src="/js/bootstrap.min.js"></script>
       <script type="text/javascript" src="/js/jquery.sequence-min.js"></script>
@@ -68,24 +75,20 @@
                               </ul>
                            </div>
                            <div class="col-md-3">
-                              <ul class="usermenu">
+                               <ul class="usermenu">
                                     <?php 
                                     if(!$user){ ?>
                                     <li> <?php echo $this->Html->link('Đăng nhập',['quy'=>'dangnhap','id'=>1,'controller'=>'Acounts','action'=>'login'],['escape'=>false]) ?></li>
                                    
 
                                    <li><a href="/Acounts/dangki" class="">Đăng kí</a></li>
-
                                    <?php }
                                    else{
                                    ?>
                                    <li style="color: white">Xin chào <?php echo $user['fullname']?></li>
-                                     
-                                    <li> <?php echo $this->Html->link('Thoát',['quy'=>'dangxuat','id'=>1,'controller'=>'Acounts','action'=>'logout'],['escape'=>false]) ?></li>
                                    <?php } ?>
-                                   <!--  <li> <?php //echo $this->Html->link('Tài khoản của tôi',['controller'=>'Bills','action'=>'lichsumuahang'],['escape'=>false]) ?></li> -->
-
-                                  
+                                    
+                                   <li> <?php echo $this->Html->link('Thoát',['quy'=>'dangxuat','id'=>1,'controller'=>'Acounts','action'=>'logout'],['escape'=>false]) ?></li>
                                    
                                 </ul>
                               
@@ -96,15 +99,15 @@
                      <div class="header_bottom">
                         <ul class="option">
                            <li id="search" class="search">
-                              <form method="post" action="/HomeUsers/tim/"><input class="search-submit" type="submit" value=""><input class="search-input" placeholder="Enter your search term..." type="text" value="" name="search"></form>
+                              <form><input class="search-submit" type="submit" value=""><input class="search-input" placeholder="Enter your search term..." type="text" value="" name="search"></form>
                            </li>
-
-                          <?php 
+                            <?php 
                             $count = 0;
-                              if($cart){
-                              foreach ($cart as $key => $value) {
-                               $count++;
-                               }
+                           if($cart){
+                          
+                           foreach ($cart as $key => $value) {
+                            $count++;
+                            }
                            ?>
                           <li class="option-cart">
                               <a href="#" class="cart-icon">cart <span class="cart_no"><?php echo $count; ?></span></a>
@@ -135,6 +138,7 @@
                                <li><a href="/HomeUsers/giamgia">Chương trình khuyến mãi</a></li>
                                <li><a href="/HomeGioiThieu/index">Giới thiệu</a></li>
                                <li ><a href="/HomeLienhe/index">Liên hệ</a></li>
+                              
 
                            </ul>
                         </div>

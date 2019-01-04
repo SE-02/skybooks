@@ -32,6 +32,13 @@ class ProductsTable extends Table {
         return $query;
     }
     
+    public function listProductGg(){
+        $query = $this->find('all')
+                        ->where(['Products.discount >='=>30])
+                        ->andwhere(['Products.discount <'=>70]);
+        return $query;
+    }
+    
     public function getNameCatalog(){
         $query = $this->find()->select(['catalog_id']);
         $list_id = $query->toArray();
@@ -102,6 +109,18 @@ class ProductsTable extends Table {
     }
     public function productCart($product_id){
         $query = $this->find()->select(['product_name','price','discount','image_link'])->where(['Products.product_id'=>$product_id]);
+        return $query;
+    }
+    public function bestSale(){
+        $query = $this->find('all')->where(['Products.discount >='=>70])->limit(1);
+        return $query;
+    }
+     public function bestSale2(){
+        $query = $this->find('all')->where(['Products.discount >='=>70])->limit(1)->offset(1);
+        return $query;
+    }
+     public function bestSale3(){
+        $query = $this->find('all')->where(['Products.discount >='=>70])->limit(1)->offset(2);
         return $query;
     }
      public function validationAdd(Validator $validator) {
