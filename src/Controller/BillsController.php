@@ -100,15 +100,115 @@ class BillsController extends AppController {
         $this->Auth->allow(['dathang','bill','dondathang']);
     }
     public function donhangchuagiao(){
+        $this->viewBuilder()->setLayout('my_layout');
+        $this->loadModel('DetailBills');
+        $this->loadModel('Products');
+        $this->loadModel('Bills');
+        $query = $this->Bills->find();
+        $query = $this->Bills->find('all')->select([
+            'madon'=>'Bills.bill_id',
+            'khachhang'=>'Bills.name_user',
+            'diachi'=>'Bills.address',
+            'diachikhac'=>'Bills.address_rc',
+            'soluong'=>$query->func()->sum('detail_bill.amount'),
+            'thanhtien'=>'Bills.total_money',
+            'ngaylap'=>"DATE_FORMAT(Bills.date, '%d/%m/%Y')"
+            ])
+        ->join(['table'=>'detail_bill',
+                'type'=>'RIGHT',
+                'conditions'=>'detail_bill.bill_id=Bills.bill_id'])
+        ->join(['table'=>'product',
+                'type'=>'LEFT',
+                'conditions'=>'product.product_id=detail_bill.product_id'])
+        ->group('Bills.bill_id')
+        ->where(['Bills.status'=>0])
+        ->toArray();
+       // print_r($query);die;
+        $this->set('query',$query);
 
+        if ($this->request->is('post')) {
+            $param = $this->request->getData('madon');
+            
+            if($param == null){
+            }else{
+                foreach ($param as $param){
+                    $sql = $this->Bills->get($param);
+                    $sql = $this->Bills->patchEntity($sql, array('status' => '1'));
+                    $this->Bills->save($sql);
+                }
+                return $this->redirect(['controller' => 'Bills', 'action' => 'donhangchuagiao']);
+            }
+        }    
     }
 
     public function donhangdanggiao(){
+        $this->viewBuilder()->setLayout('my_layout');
+        $this->loadModel('DetailBills');
+        $this->loadModel('Products');
+        $this->loadModel('Bills');
+        $query = $this->Bills->find();
+        $query = $this->Bills->find('all')->select([
+            'madon'=>'Bills.bill_id',
+            'khachhang'=>'Bills.name_user',
+            'diachi'=>'Bills.address',
+            'diachikhac'=>'Bills.address_rc',
+            'soluong'=>$query->func()->sum('detail_bill.amount'),
+            'thanhtien'=>'Bills.total_money',
+            'ngaylap'=>"DATE_FORMAT(Bills.date, '%d/%m/%Y')"
+            ])
+        ->join(['table'=>'detail_bill',
+                'type'=>'RIGHT',
+                'conditions'=>'detail_bill.bill_id=Bills.bill_id'])
+        ->join(['table'=>'product',
+                'type'=>'LEFT',
+                'conditions'=>'product.product_id=detail_bill.product_id'])
+        ->group('Bills.bill_id')
+        ->where(['Bills.status'=>1])
+        ->toArray();
+        //print_r($query);die;
+        $this->set('query',$query);
 
+        if ($this->request->is('post')) {
+            $param = $this->request->getData('madon');
+            
+            if($param == null){
+            }else{
+                foreach ($param as $param){
+                    $sql = $this->Bills->get($param);
+                    $sql = $this->Bills->patchEntity($sql, array('status' => '2'));
+                    $this->Bills->save($sql);
+                }
+                return $this->redirect(['controller' => 'Bills', 'action' => 'donhangdanggiao']);
+            }
+        }    
     }
 
     public function donhangdagiao(){
-        
+        $this->viewBuilder()->setLayout('my_layout');
+        $this->loadModel('DetailBills');
+        $this->loadModel('Products');
+        $this->loadModel('Bills');
+        $query = $this->Bills->find();
+        $query = $this->Bills->find('all')->select([
+            'madon'=>'Bills.bill_id',
+            'khachhang'=>'Bills.name_user',
+            'diachi'=>'Bills.address',
+            'diachikhac'=>'Bills.address_rc',
+            'soluong'=>$query->func()->sum('detail_bill.amount'),
+            'thanhtien'=>'Bills.total_money',
+            'ngaylap'=>"DATE_FORMAT(Bills.date, '%d/%m/%Y')"
+            ])
+        ->join(['table'=>'detail_bill',
+                'type'=>'RIGHT',
+                'conditions'=>'detail_bill.bill_id=Bills.bill_id'])
+        ->join(['table'=>'product',
+                'type'=>'LEFT',
+                'conditions'=>'product.product_id=detail_bill.product_id'])
+        ->group('Bills.bill_id')
+        ->where(['Bills.status'=>2])
+        ->toArray();
+       // print_r($query);die;
+        $this->set('query',$query);
     }
 }
 ?>
