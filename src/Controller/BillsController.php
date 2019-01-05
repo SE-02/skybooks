@@ -210,6 +210,48 @@ class BillsController extends AppController {
        // print_r($query);die;
         $this->set('query',$query);
     }
+    public function lichsumuahang(){
+        $this->viewBuilder()->setLayout('home_page_layout');
+        $this->loadModel('Products');
+        $this->loadModel('Bills');
+        $this->loadModel('Acounts');
+        $this->loadModel('DetailBills');
+        $catalog = $this->loadModel('Catalog');
+        $list = $catalog->listCatalog();
+        $this->set('list',$list);
+        $product = $this->loadModel('Products');
+        $bestSale = $product->bestSale();
+        $bestSale2 = $product->bestSale2();
+        $bestSale3 = $product->bestSale3();
+        $this->set('bestSale',$bestSale);
+        $this->set('bestSale2',$bestSale2);
+        $this->set('bestSale3',$bestSale3);
+        $user = $this->Auth->user();
+        $this->set('user',$user);
+         $cart = $this->Cookie->read('cart');
+        $this->set('cart',$cart);
+         
+            $query = $this->Acounts->find('all')->select([
+                'khachhang'=>'Acounts.fullname',
+                'sanpham'=>'product.product_name',
+                'soluong'=>'detail_bill.amount',
+                'thanhtien'=>'detail_bill.price*detail_bill.amount',
+                'ngaylap'=>"DATE_FORMAT(bill.date, '%d/%m/%Y')"
+                ])
+            ->join(['table'=>'bill',
+                    'type'=>'LEFT',
+                    'conditions'=>'bill.user_id=Acounts.user_id'])
+            ->join(['table'=>'detail_bill',
+                    'type'=>'RIGHT',
+                    'conditions'=>'detail_bill.bill_id=bill.bill_id'])
+            ->join(['table'=>'product',
+                    'type'=>'LEFT',
+                    'conditions'=>'product.product_id=detail_bill.product_id'])
+            ->where(['Acounts.user_id'=>$user['user_id']])
+            ->toArray();
+            $this->set('query',$query);
+        
+    }
 }
 ?>
 
