@@ -1,0 +1,12 @@
+﻿BIÊN BẢN HỌP NHÓM NGÀY 23/12/2018
+ NỘI DUNG CÔNG VIỆC
+1.Phân chia công việc và assgine các chức năng cho dev:
+- Xem thông tin giới thiệu chính sách, liên hệ.
+- Tìm kiếm sản phẩm theo tên
+- Xem chương trình khuyến mại
+- Xem báo cáo bàn hàng theo tháng
+- Xem thông tin sản phẩm tồn kho
+2. Phân chia công việc và assigne cho test:
+- Viết testcase cho các chức năng trên
+- Test chức năng giỏ hàng
+ 

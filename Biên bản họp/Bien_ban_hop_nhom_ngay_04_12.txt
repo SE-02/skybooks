@@ -1,0 +1,15 @@
+﻿BIÊN BẢN HỌP NHÓM NGÀY 13/11/2018
+ NỘI DUNG CÔNG VIỆC
+1.Phân chia công việc và assgine các chức năng cho dev:
+- Xem chi tiết sản phẩm (user)
+- Tạo trang chủ user
+- Đăng kí thành viên
+- Quản lí danh mục sách
+- Quản lí sản phẩm
+- Quản lí kho hàng
+- Quản lí phản hổi của khách hàng
+- Gợi í mua sách
+- Chức năng giỏ hàng
+2. Phân chia công việc và assigne cho test:
+Viết testcase cho các chức năng trên
+ 

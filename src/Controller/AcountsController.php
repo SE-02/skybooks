@@ -17,10 +17,10 @@ class AcountsController extends AppController{
     }
     public function login(){
     	$this->viewBuilder()->setLayout('my_layout_login');
-    	//$query = $this->Auth->user();
-        //$url = $this->Cookie->read('url');
-        //$ref = $_GET['quy'];
-        //$id = $_GET['id'];
+    	$query = $this->Auth->user();
+        // $url = $this->Cookie->read('url');
+        $ref = isset($_GET['quy']) ? $_GET['quy'] : '';
+        $id = isset($_GET['id']) ? $_GET['id'] : '';
         if($this->request->is('post')){
             $data = $this->request->data();
             if (empty($data['email']) && empty($data['password'])) {
@@ -38,6 +38,18 @@ class AcountsController extends AppController{
                         if($query['role_id']==1){
                             $this->redirect(['controller' => 'Home', 'action' => 'index']);
                         }else{
+                            if($ref == "product-detail" && $id) {
+                                $this->redirect(['controller' => 'DetailProduct', 'action' => 'index/'.$id]);
+                            }
+                            if($ref == "dathang" && $id){
+                                $this->redirect(['controller' => 'Bills','action'=>'dathang']);
+                            }
+                            if($ref == "dangnhap" && $id){
+                                $this->redirect(['controller' => 'HomeUsers','action'=>'index']);
+                            }
+                            if($ref == "dangxuat" && $id){
+                                $this->redirect(['controller' => 'HomeUsers','action'=>'index']);
+                            }
                             $this->redirect(['controller' => 'HomeUsers', 'action' => 'index']);
                         }
                     }
@@ -45,7 +57,6 @@ class AcountsController extends AppController{
                     $this->Flash->error(__('Sai tên tài khoản hoặc mật khẩu'));
                 }               
             }
-            // echo "<script>alert('Đăng nhập thành công');</script>";
         }
     }
     public function dangki(){
@@ -82,6 +93,12 @@ class AcountsController extends AppController{
             }
         }
         $this->set('post', $post);
+    }
+
+    public function logout(){
+        $this->Auth->logout();
+        $this->redirect(['controller'=>'HomeUsers','action'=>'index']);
+        $this->Flash->myError('Đăng xuất thành công');
     }
 }
 ?>
