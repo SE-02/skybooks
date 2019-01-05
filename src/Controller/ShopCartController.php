@@ -77,6 +77,8 @@ class ShopCartController extends AppController {
         $this->redirect($this->referer());
     }
     public function emptyCart(){
+        $user = $this->Auth->user();
+        $this->set('user',$user);
          $cart = $this->Cookie->read('cart');
          $this->set('cart',$cart);
          $this->Cookie->delete('cart');

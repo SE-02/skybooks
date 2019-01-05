@@ -29,9 +29,8 @@
                       </h4>
                       <div class="button_group">
                         <button class="button add-cart" type="button">
-                     
-                           <?php echo $this->Html->link('Mua ngay',['type'=>'button','class'=>'mua']) 
-                        ?>
+                        <?php echo $this->Html->link('Mua ngay',['method'=>'post','type'=>'submit','class'=>'mua','controller'=>'ShopCart','action'=>'cart',$v->product_id]) 
+        ?>
                         </button>
                         <style type="text/css">
                           .mua{
@@ -40,7 +39,8 @@
                         </style>
                         
                         <button class="button compare" type="button">
-                          Xem
+                          <?php echo $this->Html->link('Xem',['type'=>'button','class'=>'xem','controller'=>'DetailProduct','action'=>'index',$v->product_id]) 
+                          ?>
                         </button>
                         
 
