@@ -57,8 +57,8 @@ class ManageWarehouseFixture extends TestFixture
             'wh_id' => 1,
             'product_id' => 1,
             'amount' => 1,
-            'created_at' => '2018-12-01 14:25:00',
-            'updated_at' => '2018-12-01 14:25:00'
+            'created_at' => '2019-01-07 17:41:49',
+            'updated_at' => '2019-01-07 17:41:49'
         ],
     ];
 }

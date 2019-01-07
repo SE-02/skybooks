@@ -49,8 +49,8 @@ class WarehouseFixture extends TestFixture
             'wh_id' => 1,
             'wh_name' => 'Lorem ipsum dolor sit amet',
             'address' => 'Lorem ipsum dolor sit amet',
-            'created_at' => '2018-12-01 13:50:26',
-            'updated_at' => '2018-12-01 13:50:26'
+            'created_at' => '2019-01-07 17:42:25',
+            'updated_at' => '2019-01-07 17:42:25'
         ],
     ];
 }
