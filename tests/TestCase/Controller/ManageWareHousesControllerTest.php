@@ -3,7 +3,8 @@ namespace App\Test\TestCase\Controller;
 
 use App\Controller\ManageWareHousesController;
 use Cake\TestSuite\IntegrationTestCase;
-
+use Cake\TestSuite\IntegrationTestTrait;
+use Cake\ORM\TableRegistry;
 /**
  * App\Controller\ManageWareHousesController Test Case
  */
@@ -39,7 +40,7 @@ class ManageWareHousesControllerTest extends IntegrationTestCase
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
-
+    //vendor/bin/phpunit tests/TestCase/Controller/ManageWareHousesControllerTest.php
     /**
      * Test quanlikho method
      *
@@ -59,9 +60,21 @@ class ManageWareHousesControllerTest extends IntegrationTestCase
      */
     public function testChitietkho()
     {
+        $this->get('/ManageWareHouses/chitietkho/');
         $makho = 1;
         $result = $this->get('/ManageWareHouses/chitietkho' . $makho);
-        $this->assertResponseOk();
-        $this->markTestIncomplete('Not implemented yet.');
+        if(!empty($makho)){
+            $this->restart();
+            $this->assertResponseOk();
+        }
+    }
+    public function testChitietkhoIdNotExits(){
+        $this->get('/ManageWareHouses/chitietkho/');
+        $makho = '';
+        $result = $this->get('/ManageWareHouses/chitietkho' . $makho);
+        if(empty($makho)){
+            $this->restart();
+            $this->assertResponseError();
+        }
     }
 }

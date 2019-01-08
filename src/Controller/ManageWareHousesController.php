@@ -7,7 +7,7 @@ use Cake\Utility\Text;
 use Cake\Datasource\ConnectionManager;
 use Cake\Network\Exception\NotFoundException;
 use Cake\Routing\Router;
-
+use Cake\ORM\TableRegistry;
 use Cake\I18n\Time;
 use Cake\I18n\Date;
 
@@ -26,10 +26,10 @@ class ManageWareHousesController extends AppController {
         parent::beforeFilter($event);
     }
     public function quanlikho(){
-        $this->loadModel('ManageWareHouse');
-        $this->loadModel('WareHouse');
-        $query = $this->ManageWareHouse->find();    
-        $query= $this->ManageWareHouse->find('all')
+        $manageWareHouseTbl = TableRegistry::get('ManageWareHouse');
+        $wareHouseTbl = TableRegistry::get('WareHouse'); 
+        $query= $manageWareHouseTbl->find();
+        $query= $manageWareHouseTbl->find('all')
             ->select([
             'makho'=>'ManageWareHouse.wh_id',
             'tenkho'=>'warehouse.wh_name',
@@ -48,10 +48,10 @@ class ManageWareHousesController extends AppController {
         $this->set('query',$query);  
     }
     public function chitietkho($makho){
-        $this->loadModel('ManageWareHouse');
-        $this->loadModel('Products');
-        $this->loadModel('WareHouse');
-        $query= $this->ManageWareHouse->find('all')->select([
+        $manageWareHouseTbl = TableRegistry::get('ManageWareHouse');
+        $wareHouseTbl = TableRegistry::get('WareHouse');
+        $productTbl = TableRegistry::get('Products');
+        $query= $manageWareHouseTbl->find('all')->select([
             'masach'=>'ManageWareHouse.product_id',
             'tensach'=>'product.product_name',
             'SLsach_nhap'=>'ManageWareHouse.amount'
