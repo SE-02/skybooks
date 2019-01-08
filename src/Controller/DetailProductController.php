@@ -44,6 +44,10 @@ class DetailProductController extends AppController {
         $this->set('list_catalog',$list_catalog);
         $user = $this->Auth->user();
         $this->set('user',$user);
+        $cart = $this->Cookie->read('cart');
+        $this->set('cart',$cart);
+        $total = $this->Cookie->read('total');
+        $this->set('total',$total);
         $url = '/DetailProduct/index/*';
         //$url = 'http://skybooks.test/detail-product/index/*';
         $this->Cookie->write('url',$url);

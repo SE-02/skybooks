@@ -1,0 +1,9 @@
+﻿BIÊN BẢN HỌP NHÓM NGÀY 12/12/2018
+ NỘI DUNG CÔNG VIỆC
+1.Phân chia công việc và assgine các chức năng cho dev:
+- Tiếp tục làm Chức năng giỏ hàng
+- Fix 1 số lỗi sau khi merge code
+- Làm chức năng Đặt hàng
+2. Phân chia công việc và assigne cho test:
+- Viết testcase của các chức năng trên
+- Test tất cả các chức năng đã hoàn thiện
