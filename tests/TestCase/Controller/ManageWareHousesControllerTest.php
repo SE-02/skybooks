@@ -62,18 +62,22 @@ class ManageWareHousesControllerTest extends IntegrationTestCase
     {
         $this->get('/ManageWareHouses/chitietkho/');
         $makho = 1;
-        $result = $this->get('/ManageWareHouses/chitietkho' . $makho);
+        $result = $this->get('/ManageWareHouses/chitietkho/' . $makho);
         if(!empty($makho)){
-            $this->restart();
             $this->assertResponseOk();
         }
     }
+
+    /**
+     * Test ChitietkhoIdNotExits method
+     *
+     * @return void
+     */
     public function testChitietkhoIdNotExits(){
         $this->get('/ManageWareHouses/chitietkho/');
         $makho = '';
-        $result = $this->get('/ManageWareHouses/chitietkho' . $makho);
+        $result = $this->get('/ManageWareHouses/chitietkho/' . $makho);
         if(empty($makho)){
-            $this->restart();
             $this->assertResponseError();
         }
     }
