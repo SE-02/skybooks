@@ -5,6 +5,7 @@ use App\Controller\ManageWareHousesController;
 use Cake\TestSuite\IntegrationTestCase;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\ORM\TableRegistry;
+use Cake\Core\Configure;
 /**
  * App\Controller\ManageWareHousesController Test Case
  */
@@ -48,11 +49,24 @@ class ManageWareHousesControllerTest extends IntegrationTestCase
      */
     public function testQuanlikho()
     {
-        $result = $this->get('/ManageWareHouses/quanlikho');
+        $result = $this->get('/manage-ware-houses/quanlikho');
         $this->assertResponseOk();
         $this->markTestIncomplete('Not implemented yet.');
     }
 
+    /**
+     * Test that missing template renders 404 page in production
+     *
+     * @return void
+     */
+    public function testQuanlikhoMissingTemplate()
+    {
+        Configure::write('debug', false);
+        $this->get('/manage-ware-houses/quanlikho');
+
+        $this->assertResponseError();
+        $this->assertResponseContains('Error');
+    }
     /**
      * Test chitietkho method
      *
@@ -60,9 +74,9 @@ class ManageWareHousesControllerTest extends IntegrationTestCase
      */
     public function testChitietkho()
     {
-        $this->get('/ManageWareHouses/chitietkho/');
+        $this->get('/manage-ware-houses/chitietkho/');
         $makho = 1;
-        $result = $this->get('/ManageWareHouses/chitietkho/' . $makho);
+        $result = $this->get('/manage-ware-houses/chitietkho/' . $makho);
         if(!empty($makho)){
             $this->assertResponseOk();
         }
@@ -74,11 +88,26 @@ class ManageWareHousesControllerTest extends IntegrationTestCase
      * @return void
      */
     public function testChitietkhoIdNotExits(){
-        $this->get('/ManageWareHouses/chitietkho/');
+        $this->get('/manage-ware-houses/chitietkho/');
         $makho = '';
-        $result = $this->get('/ManageWareHouses/chitietkho/' . $makho);
+        $result = $this->get('/manage-ware-houses/chitietkho/' . $makho);
         if(empty($makho)){
             $this->assertResponseError();
         }
+    }
+
+    /**
+     * Test that missing template renders 404 page in production
+     *
+     * @return void
+     */
+    public function testChitietkhoMissingTemplate()
+    {
+        Configure::write('debug', false);
+        $makho = 1;
+        $this->get('/manage-ware-houses/chitietkho/' . $makho);
+
+        $this->assertResponseError();
+        $this->assertResponseContains('Error');
     }
 }

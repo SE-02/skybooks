@@ -2,8 +2,11 @@
 namespace App\Controller;
 
 use Cake\Event\Event;
+use Cake\Core\Configure;
 use App\Controller\AppController;
 use Cake\Utility\Text;
+use Cake\View\Exception\MissingTemplateException;
+use Cake\Network\Exception\ForbiddenException;
 use Cake\Datasource\ConnectionManager;
 use Cake\Network\Exception\NotFoundException;
 use Cake\Routing\Router;
@@ -45,7 +48,15 @@ class ManageWareHousesController extends AppController {
             ->group('warehouse.wh_id')
             ->toArray();
             // print_r($query);die;
-        $this->set('query',$query);  
+        $this->set('query',$query);
+        try {
+            $this->render('quanlikho');
+        } catch (MissingTemplateException $exception) {
+            if (Configure::read('debug')) {
+                throw $exception;
+            }
+            throw new NotFoundException();
+        }  
     }
     public function chitietkho($makho){
         $manageWareHouseTbl = TableRegistry::get('ManageWareHouse');
@@ -62,5 +73,13 @@ class ManageWareHousesController extends AppController {
         ->where(['ManageWareHouse.wh_id'=>$makho])
         ->toArray();
         $this->set('query',$query);
+        try {
+            $this->render('chitietkho');
+        } catch (MissingTemplateException $exception) {
+            if (Configure::read('debug')) {
+                throw $exception;
+            }
+            throw new NotFoundException();
+        }
     }
 }
